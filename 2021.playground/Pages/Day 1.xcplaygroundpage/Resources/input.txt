@@ -1,6 +1,3 @@
-import Foundation
-
-let input = """
 155
 157
 156
@@ -2001,64 +1998,3 @@ let input = """
 9875
 9893
 9899
-"""
-
-// Parse the measurements into ints
-let measurements = input.components(separatedBy: .newlines).compactMap { Int($0) }
-
-// Working variables used for both puzzles
-var increments = 0
-var decrements = 0
-var previousMeasurement = measurements.first
-
-// MARK: Puzzle 1
-
-for measurement in measurements.dropFirst() {
-    if let previous = previousMeasurement {
-        if measurement > previous {
-            increments += 1
-        } else {
-            decrements += 1
-        }
-    }
-    previousMeasurement = measurement
-}
-
-print("""
-Totals:
-  Increments: \(increments)
-  Decrements: \(decrements)
-""")
-
-// MARK: Puzzle 2
-
-var tripleMeasurements: [Int] = []
-
-for value in measurements.dropLast(2).enumerated() {
-    let tripleMeasurement = value.element
-        + measurements[value.offset + 1]
-        + measurements[value.offset + 2]
-    tripleMeasurements.append(tripleMeasurement)
-}
-
-// Reset working variables
-increments = 0
-decrements = 0
-previousMeasurement = tripleMeasurements.first
-
-for measurement in tripleMeasurements.dropFirst() {
-    if let previous = previousMeasurement {
-        if measurement > previous {
-            increments += 1
-        } else {
-            decrements += 1
-        }
-    }
-    previousMeasurement = measurement
-}
-
-print("""
-Triple Totals:
-  Increments: \(increments)
-  Decrements: \(decrements)
-""")
