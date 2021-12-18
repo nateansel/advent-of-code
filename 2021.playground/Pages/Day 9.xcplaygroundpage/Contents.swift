@@ -130,7 +130,7 @@ Part 1 Solution:
     Risk Level: \(riskLevel)
 """)
 
-/*
+/*:
  ## Part Two
 
  Next, you need to find the largest basins so you know what areas are most important to avoid.
